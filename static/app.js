@@ -37,7 +37,12 @@ $(document).ready(function(){
 		$('div.repwho-infobox .repwho-party').text(rep.party);
 		$('div.repwho-infobox .repwho-state').text(rep.state);
 		$('div.repwho-infobox .repwho-website').html("<a href="+rep.website+">"+rep.website+"</a>");
-		$('div.repwho-infobox .repwho-twitter').html("Find me on Twitter: @<a href="+"http://www.twitter.com/"+rep.person.twitterid+">"+rep.person.twitterid+"</a>");
+		if(rep.person.twitterid){
+			$('div.repwho-infobox .repwho-twitter').html("Find me on Twitter: @<a href="+"http://www.twitter.com/"+rep.person.twitterid+">"+rep.person.twitterid+"</a>");
+			$('div.repwho-infobox .repwho-twitter').show();
+		}else{
+			$('div.repwho-infobox .repwho-twitter').hide();
+		}
 
 		var left = this.offsetLeft;
 		var top = this.offsetTop;
