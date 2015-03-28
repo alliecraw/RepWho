@@ -19,11 +19,13 @@ $(document).ready(function(){
 			$(this).addClass("repwho-hover");
 			$(this).attr('data-info',i);
 		});
-
-		
-
-
 	}
+	$("body").on( "mouseover", ".repwho-hover", function() {
+		console.log($(this).text());
+		var index = $(this).attr("data-info");
+		console.log(index);
+		console.log(RepWho.politicians[index]);
+	});
 	
 
 
