@@ -1,64 +1,30 @@
+(function(RepWho){
+	RepWho.politicians = [];
+	//fetches data and caches it in politicians
+	RepWho.getPoliticians = function(){
+		RepWho.politicians = RepWho.rawPoliticians.objects;
+	};
+}(RepWho=window.RepWho || {}));
+
 $(document).ready(function(){
 
-	var politicians = ["Alma Adams", "Robert Aderholt", "Lamar Alexander", "Justin Amash", "Mark Amodei"];
-	$("body")
-		.filter(function() {
-		// var foundIn;
-		// foundIn = $('*:contains("Alma Adams")');
-		//alert("filtr function");
-		/*
-			for variable in array
-				if webpage contains variable
-					log to console
-				else
-					log not found (to test) 
-		*/
+	RepWho.getPoliticians();
+	
+	var politician;
+	for(var i=0; i<RepWho.politicians.length; i++){
+		politician = RepWho.politicians[i];
 
-/*
-		NOTES FROM THE HELP GUY
+		$('span:contains("'+politician.person.lastname+'")').each(function(){
+			console.log($(this));
+			$(this).addClass("repwho-hover");
+			$(this).attr('data-info',i);
+		});
 
-		add a CSS class or data attribute
-		<p class="poli" data-politician="myName">
+		
 
 
-
-
-
-
-
-*/
-
-		var i;
-		for(i in politicians){
-			// if($('body:contains(i)')){
-			// 	console.log("Found politician: " + politicians[i]);
-			// 	//alert("Found politician: " + politicians[i]);
-			// }
-			// else
-			// 	console.log("SOMETHING BROKE");
-
-			if($("body:contains(i)")){	
-				var name = $("body:contains(i)").text();	
-				// var name = $("body:contains(i)");
-				console.log("the name is this: "+name+" okay.");
-
-			}
-
-			else{
-				console.log("nah");
-			}
-			// console.log($('body'));
-			// alert("ugh2");
-			// name.css("color", "red");
-
-		}
-
-		/*
-			I want to search a webpage for any of the politicians names that
-			are found in my array.
-		*/
-
-	});
+	}
+	
 
 
 });
