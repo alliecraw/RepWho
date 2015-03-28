@@ -34,7 +34,13 @@ $(document).ready(function(){
 		$('div.repwho-infobox .party').text(rep.party);
 		$('div.repwho-infobox .state').text(rep.state);
 		$('div.repwho-infobox .website').text(rep.website);
-		$('div.repwho-infobox .twitter').text("Find me on Twitter: @"+rep.person.twitterid);
+		if(rep.person.twitterid){
+			$('div.repwho-infobox .twitter').text("Find me on Twitter: @"+rep.person.twitterid);
+			$('div.repwho-infobox .twitter').show();
+		}
+		else{
+			$('div.repwho-infobox .twitter').hide();
+		}
 
 		var left = this.offsetLeft;
 		var top = this.offsetTop;
