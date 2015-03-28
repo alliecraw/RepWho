@@ -9,7 +9,8 @@
 $(document).ready(function(){
 
 	RepWho.getPoliticians();
-	
+	$("div.repwho-infobox").hide();
+
 	var politician;
 	for(var i=0; i<RepWho.politicians.length; i++){
 		politician = RepWho.politicians[i];
@@ -25,8 +26,15 @@ $(document).ready(function(){
 		var index = $(this).attr("data-info");
 		console.log(index);
 		console.log(RepWho.politicians[index]);
+		var left = this.offsetLeft;
+		var top = this.offsetTop;
+		$("div.repwho-infobox").css({'top':top-30,'left':left, 'position':'absolute'});
+		$("div.repwho-infobox").show();
 	});
-	
+	$("body").on( "mouseleave", ".repwho-hover", function() {
+		$("div.repwho-infobox").hide();
+	});
+
 
 
 });
