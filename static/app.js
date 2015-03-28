@@ -32,27 +32,12 @@ $(document).ready(function(){
 
 		var rep = RepWho.politicians[index];
 
-<<<<<<< HEAD
 		$('div.repwho-infobox .repwho-name').text(rep.person.firstname + " " + rep.person.middlename+ " " + rep.person.lastname);
 		$('div.repwho-infobox .repwho-role').text(rep.role_type_label);
 		$('div.repwho-infobox .repwho-party').text(rep.party);
 		$('div.repwho-infobox .repwho-state').text(rep.state);
 		$('div.repwho-infobox .repwho-website').html("<a href="+rep.website+">"+rep.website+"</a>");
 		$('div.repwho-infobox .repwho-twitter').html("Find me on Twitter: @<a href="+"http://www.twitter.com/"+rep.person.twitterid+">"+rep.person.twitterid+"</a>");
-=======
-		$('div.repwho-infobox .name').text(rep.person.firstname + " " + rep.person.middlename+ " " + rep.person.lastname);
-		$('div.repwho-infobox .role').text(rep.role_type_label);
-		$('div.repwho-infobox .party').text(rep.party);
-		$('div.repwho-infobox .state').text(rep.state);
-		$('div.repwho-infobox .website').text(rep.website);
-		if(rep.person.twitterid){
-			$('div.repwho-infobox .twitter').text("Find me on Twitter: @"+rep.person.twitterid);
-			$('div.repwho-infobox .twitter').show();
-		}
-		else{
-			$('div.repwho-infobox .twitter').hide();
-		}
->>>>>>> 7e15530582af485609c534dae3d097dd17a31e16
 
 		var left = this.offsetLeft;
 		var top = this.offsetTop;
