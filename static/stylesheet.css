@@ -1,3 +1,9 @@
 .repwho-hover {
 	color:red;
 }
+.repwho-infobox{
+	position: absolute;
+	background-color:#FFF;
+	border:1px solid black;
+	padding:5px;
+}
