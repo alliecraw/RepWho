@@ -17,8 +17,11 @@ $(document).ready(function(){
 
 		$('span:contains("'+politician.person.lastname+'")').each(function(){
 			console.log($(this));
-			$(this).addClass("repwho-hover");
-			$(this).attr('data-info',i);
+
+			$(this).html($(this).html().replace(politician.person.lastname,'<span class="repwho-hover" data-info="'+i+'">'+politician.person.lastname+'</span>'));
+
+			//$(this).addClass("repwho-hover");
+			//$(this).attr('data-info',i);
 		});
 	}
 	$("body").on( "mouseover", ".repwho-hover", function() {
@@ -29,12 +32,12 @@ $(document).ready(function(){
 
 		var rep = RepWho.politicians[index];
 
-		$('div.repwho-infobox .name').text(rep.person.firstname + " " + rep.person.middlename+ " " + rep.person.lastname);
-		$('div.repwho-infobox .role').text(rep.role_type_label);
-		$('div.repwho-infobox .party').text(rep.party);
-		$('div.repwho-infobox .state').text(rep.state);
-		$('div.repwho-infobox .website').text(rep.website);
-		$('div.repwho-infobox .twitter').text("Find me on Twitter: @"+rep.person.twitterid);
+		$('div.repwho-infobox .repwho-name').text(rep.person.firstname + " " + rep.person.middlename+ " " + rep.person.lastname);
+		$('div.repwho-infobox .repwho-role').text(rep.role_type_label);
+		$('div.repwho-infobox .repwho-party').text(rep.party);
+		$('div.repwho-infobox .repwho-state').text(rep.state);
+		$('div.repwho-infobox .repwho-website').html("<a href="+rep.website+">"+rep.website+"</a>");
+		$('div.repwho-infobox .repwho-twitter').html("Find me on Twitter: @<a href="+"http://www.twitter.com/"+rep.person.twitterid+">"+rep.person.twitterid+"</a>");
 
 		var left = this.offsetLeft;
 		var top = this.offsetTop;
@@ -42,7 +45,7 @@ $(document).ready(function(){
 		$("div.repwho-infobox").css({'top':top+30,'left':left, 'position':'absolute'});
 		$("div.repwho-infobox").show();
 	});
-	$("body").on( "mouseleave", ".repwho-hover", function() {
+	$("body").on( "click", ".repwho-hover", function() {
 		$("div.repwho-infobox").hide();
 	});
 
