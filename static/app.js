@@ -22,8 +22,14 @@ $(document).ready(function(){
 		});
 	}
 	$("body").on( "mouseover", ".repwho-hover", function() {
-		console.log($(this).text());
+		// console.log($(this).text());
+		
+		// console.log(index);
+		// console.log(RepWho.politicians[index]);
+
+
 		var index = $(this).attr("data-info");
+<<<<<<< Updated upstream
 		console.log(index);
 		console.log(RepWho.politicians[index]);
 		var left = this.offsetLeft;
@@ -33,6 +39,19 @@ $(document).ready(function(){
 	});
 	$("body").on( "mouseleave", ".repwho-hover", function() {
 		$("div.repwho-infobox").hide();
+=======
+		var rep = RepWho.politicians[index];
+
+
+
+		$('#repwho-popup .name').text(rep.person.firstname + " " + rep.person.middlename+ " " + rep.person.lastname);
+		$('#repwho-popup .role').text(rep.role_type_label);
+		$('#repwho-popup .party').text(rep.party);
+		$('#repwho-popup .state').text(rep.state);
+		$('#repwho-popup .website').text(rep.website);
+		$('#repwho-popup .twitter').text("Find me on Twitter: @"+rep.person.twitterid);
+
+>>>>>>> Stashed changes
 	});
 
 
