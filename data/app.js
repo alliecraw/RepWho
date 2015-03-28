@@ -19,20 +19,55 @@ RepWho.getPoliticians = function(){
 $(document).ready(function(){
 
 	RepWho.getPoliticians();
+
+
+	var div = document.createElement('div');
+	$(div).attr("class", "repwho-infobox");
+	document.getElementsByTagName('body')[0].appendChild(div);
+
+	$("div.repwho-infobox").html('\
+		<h4 class="repwho-name">\
+			Name\
+		</h4>\
+		\
+		<div class="repwho-role">\
+			Role\
+		</div>\
+		\
+		<div class="repwho-party">\
+			Party\
+		</div>\
+		\
+		<div class="repwho-pic" style="display: none">[pic]</div>\
+		\
+		<div class="repwho-state">\
+			State\
+		</div>\
+		<div class="repwho-website">\
+			website\
+		</div>\
+		\
+		<div class="repwho-twitter">\
+			twitter handle\
+		</div>\
+	');
+	$("div.repwho-infobox").css({'position': 'absolute', 'background-color':'#FFF', 'border':'1px solid black', 'padding':'5px'});
+
+
 	$("div.repwho-infobox").hide();
 
 	var politician;
 	for(var i=0; i<RepWho.politicians.length; i++){
 		politician = RepWho.politicians[i];
 
-		$('span:contains("'+politician.person.lastname+'")').each(function(){
+		$('p:contains("'+politician.person.lastname+'")').each(function(){
 			console.log($(this));
 
 			$(this).html($(this).html().replace(politician.person.lastname,'<span class="repwho-hover" data-info="'+i+'">'+politician.person.lastname+'</span>'));
 		});
 	}
 	$("span.repwho-hover").css({'color':'red'});
-	$("body").on( "mouseover", ".repwho-hover", function() {
+	$("body").on( "mouseover", ".repwho-hover", function(e) {
 		var index = $(this).attr("data-info");
 
 		console.log(index);
@@ -52,8 +87,8 @@ $(document).ready(function(){
 			$('div.repwho-infobox .repwho-twitter').hide();
 		}
 
-		var left = this.offsetLeft;
-		var top = this.offsetTop;
+		var left = e.pageX;
+		var top = e.pageY;
 
 		$("div.repwho-infobox").css({'top':top+30,'left':left, 'position':'absolute'});
 		$("div.repwho-infobox").show();
