@@ -50,6 +50,9 @@ $(document).ready(function(){
 		<div class="repwho-twitter">\
 			twitter handle\
 		</div>\
+		<div class="repwho-opensecrets">\
+			opensecrets\
+		</div>\
 	');
 	$("div.repwho-infobox").css({'position': 'absolute', 'background-color':'#FFF', 'border':'1px solid black', 'padding':'5px'});
 
@@ -92,6 +95,7 @@ $(document).ready(function(){
 		}else{
 			$('div.repwho-infobox .repwho-twitter').hide();
 		}
+		$('div.repwho-infobox .repwho-opensecrets').html("<a href='http://www.opensecrets.org/politicians/summary.php?cid="+rep.person.osid+"'>"+"Who funds me?"+"</a>");
 
 		var left = e.pageX;
 		var top = e.pageY;
