@@ -60,13 +60,19 @@ $(document).ready(function(){
 	for(var i=0; i<RepWho.politicians.length; i++){
 		politician = RepWho.politicians[i];
 
-		$('p:contains("'+politician.person.lastname+'")').each(function(){
-			console.log($(this));
+		var ln = politician.person.lastname;
+		var fn = politician.person.firstname;
+		var mi = politician.person.middlename;
+		var nn = politician.person.nickname;
 
-			$(this).html($(this).html().replace(politician.person.lastname,'<span class="repwho-hover" data-info="'+i+'">'+politician.person.lastname+'</span>'));
+		$('p:contains("'+politician.person.firstname+" "+politician.person.lastname+'")').each(function(){
+
+			$(this).html($(this).html().replace(politician.person.firstname+" "+politician.person.lastname,'<span class="repwho-hover" data-info="'+i+'">'+politician.person.firstname+" "+politician.person.lastname+'</span>'));
+			
+
 		});
 	}
-	$("span.repwho-hover").css({'color':'red'});
+	$("span.repwho-hover").css({'background-color':'yellow'});
 	$("body").on( "mouseover", ".repwho-hover", function(e) {
 		var index = $(this).attr("data-info");
 
